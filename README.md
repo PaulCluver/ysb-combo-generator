@@ -1,65 +1,34 @@
-[![Build Status](https://travis-ci.org/tonysneed/Demo.VSCode.TypeScript.svg?branch=master)](https://travis-ci.org/tonysneed/Demo.VSCode.TypeScript)
-# Demo: Sample Visual Studio Code project for TypeScript
+[![Build Status](https://travis-ci.org/{{github-user-name}}/{{github-app-name}}.svg?branch=master)](https://travis-ci.org/{{github-user-name}}/{{github-app-name}}.svg?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/{{github-user-name}}/{{github-app-name}}/badge.svg?branch=master)](https://coveralls.io/github/{{github-user-name}}/{{github-app-name}}?branch=master)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 
-1. You should first install the following **extensions** for Visual Studio Code.
-  - [VS Code JSHint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.jshint): ```jshint```
-  - [VS Code TSHint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint): ```tslint```
-  - [Editor Config for VS Code](https://marketplace.visualstudio.com/items?itemName=chrisdias.vscodeEditorConfig): ```editorconfig```
-    + To install an extension, type Cmd+P to diplay the Command Palette, then type ext and press Enter.
-    + Type the extension keyword shown above and press Enter to install.
-    + ```editorconfig``` will bring up two extensions, so just install *Editor Config for VS Code*.
+# Using this module in other modules
 
-2. First Make sure you can **debug** TypeScript source files and tests from with VS Code.
+Here is a quick example of how this module can be used in other modules. The [TypeScript Module Resolution Logic](https://www.typescriptlang.org/docs/handbook/module-resolution.html) makes it quite easy. The file `src/index.ts` is a [barrel](https://basarat.gitbooks.io/typescript/content/docs/tips/barrel.html) that re-exports selected exports from other files. The _package.json_ file contains `main` attribute that points to the generated `lib/index.js` file and `typings` attribute that points to the generated `lib/index.d.ts` file.
 
-  - Select `greeter.ts` in `src\greeter\greeter.ts`
-  - Click the Debug icon in VS Code.
-  - Select *Debug Current TypeScript File* dropdown and press **F5** to launch
-    the debugger and break on the first line.
-  - Then select `greeter.spec.ts` and set a breakpoint.
-  - Select *Debug Current TypeScript Test* dropdown and press **F5** to launch
-    the debugger and stop at the breakpoint.
+> If you are planning to have code in multiple files (which is quite natural for a NodeJS module) that users can import, make sure you update `src/index.ts` file appropriately.
 
-3. Then try to launch the **build** and **test** tasks from within VS Code.
+Now assuming you have published this amazing module to _npm_ with the name `my-amazing-lib`, and installed it in the module in which you need it -
 
- - Add the following to keyboard shortcuts:
- ```
- { "key": "ctrl+shift+t",          "command": "workbench.action.tasks.test" }
- ```
+- To use the `Greeter` class in a TypeScript file -
 
- - Press **Cmd+Shift+B** to build.
- - Press **Cmd+Shift+T** to run tests and see result in the Output window.
+```ts
+import { Greeter } from "my-amazing-lib";
 
-4. Next you can execute **gulp** tasks from the Terminal.
+const greeter = new Greeter("World!");
+greeter.greet();
+```
 
-  - Note that gulp commands can also be run from within VS Code, pressing
-    **Cmd+P** and typing **task**, then typing part of the task name.
+- To use the `Greeter` class in a JavaScript file -
 
-  - Show available gulp commands.
+```js
+const Greeter = require('my-amazing-lib').Greeter;
 
-    ```
-    gulp
-    ```
+const greeter = new Greeter('World!');
+greeter.greet();
+```
 
-  - Run jasmine tests using **karma**.
-
-    ```
-    gulp test
-    ```
-
-  - Run jasmine tests using **karma** with a **watch**.
-    After running, make a change to `greeter.spec.ts` so that it fails.
-
-    ```
-    gulp tests:watch
-    ```
-
-  - Serve jasmine tests in the **browser**.
-    After running, make a change to `greeter.ts` so that it fails.
-
-    ```
-    gulp tests:serve
-    ```
-
-6. TypeScript files and tests may be added to the **src** directory,
-   either at the src root or in nested subdirectories.
-
+## Setting travis and coveralls badges
+1. Sign in to [travis](https://travis-ci.org/) and activate the build for your project.
+2. Sign in to [coveralls](https://coveralls.io/) and activate the build for your project.
+3. Replace {{github-user-name}}/{{github-app-name}} with your repo details like: "ospatil/generator-node-typescript".

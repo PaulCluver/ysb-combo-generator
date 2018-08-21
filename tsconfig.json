@@ -1,27 +1,26 @@
 {
   "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
     "declaration": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "lib": [
+      "esnext"
+    ],
+    "target": "es2015",
+    "strict": true,
+    "outDir": "./lib",
+    "preserveConstEnums": true,
     "removeComments": true,
-    "noImplicitAny": true,
-    "rootDir": "./src"
-  },
-//   "filesGlob": [
-//     "typings/index.d.ts",
-//     "src/**/*.ts"
-//   ],
-//   "files": [
-//     "src\\a\\a.spec.ts",
-//     "src\\greeter\\greeter.spec.ts",
-//     "src\\greeter\\greeter.ts",
-//     "src\\italiangreeter\\italiangreeter.spec.ts",
-//     "src\\italiangreeter\\italiangreeter.ts",
-//     "typings\\index.d.ts"
-//   ]
-    "exclude": [
-        "node_modules",
-        "typings/globals"
+    "inlineSourceMap": true,
+    "typeRoots": [
+      "./node_modules/@types"
     ]
+  },
+  "include": [
+    "src/**/*", "test/throw-manager-spec.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*-spec.ts"
+  ]
 }
