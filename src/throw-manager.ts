@@ -14,9 +14,9 @@ export class ThrowManager {
         const randomNumber = Math.floor(Math.random() * (1 - 0 + 1) + 0);
         result.push(this.substituteRandomNumber(randomNumber));
       }
-
-      var sum = result.reduce((a, b) => a + b, 0);
-      this.throws.push(new CoinThrow(result, sum));
+      this.throws.push(
+        new CoinThrow(indexThrows, result, result.reduce((a, b) => a + b, 0))
+      );
     }
   }
 

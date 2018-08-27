@@ -1,6 +1,7 @@
-import { ThrowManager } from "../src/throw-manager";
+// tslint:disable-next-line:no-implicit-dependencies
 import * as chai from "chai";
-import { throws } from "assert";
+import { Gua } from "../src/gua";
+import { ThrowManager } from "../src/throw-manager";
 
 const expect = chai.expect;
 
@@ -11,10 +12,21 @@ describe("ThrowManager", () => {
     expect(manager.throws.length).to.equal(6);
     expect(manager.throws[0].coinThrowValues.length).to.equal(3);
     expect(manager.throws[0].coinThrowSum).to.not.equal(-1);
-
-    for (let index = 0; index < manager.throws.length; index++) {
-      const element = manager.throws[index];
-      console.warn(element);
-    }
+    // tslint:disable-next-line:no-console
+    console.warn(manager.throws);
+    const bottomGua = new Gua(
+      manager.throws[0].coinThrowLine,
+      manager.throws[1].coinThrowLine,
+      manager.throws[2].coinThrowLine
+    );
+    const topGua = new Gua(
+      manager.throws[3].coinThrowLine,
+      manager.throws[4].coinThrowLine,
+      manager.throws[5].coinThrowLine
+    );
+    // tslint:disable-next-line:no-console
+    console.warn(bottomGua);
+    // tslint:disable-next-line:no-console
+    console.warn(topGua);
   });
 });
