@@ -5,8 +5,12 @@
   "license": "MIT",
   "repository": "",
   "author": "",
-  "keywords": [""],
-  "files": ["lib"],
+  "keywords": [
+    ""
+  ],
+  "files": [
+    "lib"
+  ],
   "main": "lib/index.js",
   "typings": "lib/index.d.ts",
   "scripts": {
@@ -14,22 +18,23 @@
     "format": "prettier --write \"{src,test}/**/*.ts\"",
     "lint": "tslint --force --format verbose \"src/**/*.ts\"",
     "prepublishOnly": "npm run build",
-    "build":
-      "npm run format && npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
-    "test":
-      "npm run build && mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
-    "coverage":
-      "nyc --include=\"src/**/*.ts\" --reporter=text --reporter=html --reporter=lcov mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
+    "build": "npm run format && npm run clean && npm run lint && echo Using TypeScript && tsc --version && tsc --pretty",
+    "test": "npm run build && mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
+    "coverage": "nyc --include=\"src/**/*.ts\" --reporter=text --reporter=html --reporter=lcov mocha --compilers ts:ts-node/register --recursive \"test/**/*-spec.ts\"",
     "watch": "npm run build -- --watch",
     "watch:test": "npm run test -- --watch"
   },
   "dependencies": {
+    "@types/csv-parse": "^1.1.11",
+    "csv-parse": "^3.0.0"
   },
   "devDependencies": {
     "@types/chai": "^3.0.0",
     "@types/mocha": "^2.0.0",
-    "@types/node": "^8.0.0",
+    "@types/node": "^8.10.29",
+    "FileReader": "^0.10.2",
     "chai": "^3.0.0",
+    "coveralls": "^2.0.0",
     "mocha": "^3.0.0",
     "nyc": "^10.0.0",
     "prettier": "^1.5.2",
@@ -37,17 +42,24 @@
     "ts-node": "^3.0.0",
     "tslint": "^5.0.0",
     "tslint-config-prettier": "^1.1.0",
-    "typescript": "^2.3.0",
-    "coveralls": "^2.0.0"
+    "typescript": "^2.3.0"
   },
   "engines": {
     "node": ">=6.0.0"
   },
   "nyc": {
-    "include": ["src/**/*.ts"],
-    "exclude": ["lib"],
-    "extension": [".ts"],
-    "require": ["ts-node/register"],
+    "include": [
+      "src/**/*.ts"
+    ],
+    "exclude": [
+      "lib"
+    ],
+    "extension": [
+      ".ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
     "reporter": [],
     "all": true
   }
