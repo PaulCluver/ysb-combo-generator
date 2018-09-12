@@ -10,8 +10,10 @@ describe("Integration", () => {
     const curriculumManager = new CurriculumManager();
 
     const coinThrowResult = coinThrowManager.GetOverAllResult();
-    const curriculumManagerResult = curriculumManager.GetCurriculum(coinThrowResult);
-    // tslint:disable-next-line:no-console
-    console.warn(curriculumManagerResult);
+    const curriculumManagerResult = curriculumManager.GetCurriculum(
+      coinThrowResult
+    );
+    // tslint:disable-next-line:no-unused-expression
+    expect(curriculumManager).is.not.null;
   });
 });

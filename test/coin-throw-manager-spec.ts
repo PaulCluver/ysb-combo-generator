@@ -12,7 +12,7 @@ describe("CoinThrow", () => {
     // tslint:disable-next-line:no-unused-expression
     expect(result.indexOf("0,1,0") === -1).to.be.true;
     // tslint:disable-next-line:no-unused-expression
-    expect(result.indexOf("0,0,1") === -1).to.be.true;
+    expect(result.indexOf("0,1,1") === -1).to.be.true;
   });
 
   it("should return a result of the expected length", () => {

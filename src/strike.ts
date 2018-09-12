@@ -1,6 +1,7 @@
 export class Strike {
   private id: number;
   private name: string;
+  private binaryRepresentation: string;
   private verticalOrientation: string;
   private verticalValue: number;
   private verticalYinYang: string;
@@ -13,6 +14,7 @@ export class Strike {
   constructor(
     id: number,
     name: string,
+    binaryRepresentation: string,
     verticalOrientation: string,
     verticalValue: number,
     verticalYinYang: string,
@@ -24,6 +26,7 @@ export class Strike {
   ) {
     this.id = id;
     this.name = name;
+    this.binaryRepresentation = binaryRepresentation;
     this.verticalOrientation = verticalOrientation;
     this.verticalValue = verticalValue;
     this.verticalYinYang = verticalYinYang;

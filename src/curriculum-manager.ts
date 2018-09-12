@@ -10,6 +10,21 @@ export class CurriculumManager {
   }
 
   public GetCurriculum(coinThrowResult: any): any {
-    const strikeResult = this.strikeManager.GetStrikes();
+    const strikesByBinaryNotation: any = [];
+    for (const value in coinThrowResult) {
+      if (coinThrowResult.hasOwnProperty(value)) {
+        let seq = "";
+        const element = coinThrowResult[value].split(",");
+        for (const item in element) {
+          if (element.hasOwnProperty(item)) {
+            seq += element[item];
+          }
+        }
+        strikesByBinaryNotation.push(
+          this.strikeManager.GetRandomStrikesByBinaryNotation(seq)
+        );
+      }
+    }
+    return strikesByBinaryNotation;
   }
 }

@@ -10,6 +10,25 @@ export class StrikeManager {
     return this.strikes;
   }
 
+  public GetRandomStrikesByBinaryNotation(seq: string): any {
+    const strikesByBinaryNotation: any = [];
+    for (const strike in this.strikes) {
+      if (this.strikes.hasOwnProperty(strike)) {
+        const element = this.strikes[strike];
+        if (element.id !== "") {
+          if (element.binaryRepresentation === seq) {
+            strikesByBinaryNotation.push(element);
+          }
+        }
+      }
+    }
+    const random = Math.floor(
+      Math.random() * strikesByBinaryNotation.length + 1
+    );
+
+    return strikesByBinaryNotation[random];
+  }
+
   private BuildStrikes(): any {
     this.strikes = [];
     const results: any = [];
@@ -39,6 +58,7 @@ export class StrikeManager {
           new Strike(
             element.ID,
             element.Strike,
+            element.BinaryRepresentation,
             element.VerticalOrientation,
             element.VerticalValue,
             element.VerticalYinYang,
